@@ -34,10 +34,8 @@ public class MainPageActivity extends BasicActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivFun1:
-                startActivity(PostCodeActivity.class);
                 break;
             case R.id.ivFun2:
-                startActivity(RecycleViewActivity.class);
                 break;
         }
     }

@@ -25,15 +25,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".app.activity.PostCodeActivity"
-            android:label="查询"
-            android:parentActivityName=".app.activity.MainPageActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".app.activity.RecycleViewActivity"
-            android:label="学习"
-            android:parentActivityName=".app.activity.MainPageActivity"
-            android:screenOrientation="portrait"></activity>
     </application>
 </manifest>
