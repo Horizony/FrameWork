@@ -37,7 +37,7 @@ public abstract class BasicActivity extends AppCompatActivity {
         mContext = this;
         int layoutId = getLayoutId();
         if (layoutId == 0)
-            throw new RuntimeException("layout resource not find");
+            throw new RuntimeException("layout resource not find !!!");
         setContentView(layoutId);
 
         //初始化注解绑定view
@@ -128,7 +128,7 @@ public abstract class BasicActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onBasicEvent(AppApplication event) {
+    public void onBasicEvent(Void event) {
 
     }
 
