@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.cn.horizon.life.R;
 import com.cn.horizon.life.app.adapter.MainPagerAdapter;
 import com.cn.horizon.life.app.fragment.MainPageFragment;
-import com.cn.horizon.life.basic.BasicActivity;
+import com.cn.horizon.library.basic.BasicActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;

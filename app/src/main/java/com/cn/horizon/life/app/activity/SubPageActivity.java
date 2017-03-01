@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.cn.horizon.life.R;
-import com.cn.horizon.life.basic.BasicActivity;
+import com.cn.horizon.library.basic.BasicActivity;
 
 import butterknife.Bind;
 

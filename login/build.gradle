@@ -1,0 +1,39 @@
+if (isDebug.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    resourcePrefix "login_"
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    sourceSets {
+        main {
+            if (isDebug.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
+            java.srcDirs = ['src/main/java']
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['scr/main/jni']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':library')
+}
