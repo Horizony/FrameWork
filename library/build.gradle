@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -10,8 +9,11 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -28,11 +30,12 @@ dependencies {
     compile 'com.android.support:design:25.2.0'
     compile 'io.reactivex:rxandroid:1.2.1'// rxjava
     compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.2@aar'//Android6.0权限进行检测
     compile 'com.squareup.okhttp3:okhttp:3.3.1'//okhttp
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.squareup.okio:okio:1.8.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'//retrofit2
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'//Gson
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.afollestad.material-dialogs:core:0.9.0.2'//material风格的dialog
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'//沉浸式状态栏
@@ -42,4 +45,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'//图片加载库
     compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
     compile 'org.greenrobot:greendao:3.0.1'//GreenDao数据库
+    compile 'com.alibaba:arouter-api:1.0.7' //ARouter
+    annotationProcessor 'com.alibaba:arouter-compiler:1.0.1'
 }

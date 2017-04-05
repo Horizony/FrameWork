@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.multidex.MultiDexApplication;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.cn.horizon.library.http.interceptor.CacheStrategyInterceptor;
 import com.cn.horizon.library.http.manager.OkHttpManager;
 import com.cn.horizon.library.http.manager.RetrofitManager;
@@ -16,10 +17,12 @@ import okhttp3.OkHttpClient;
  * Created by Administrator on 2016/10/25.
  */
 
-public class BasicApplication extends MultiDexApplication {
+public abstract class BasicApplication extends MultiDexApplication {
     public static final String BASE_URL = "https://www.baidu.com/";
     public static final boolean DEBUG = true;
     public static Context appContext;
+
+    protected abstract boolean isDebug();
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -35,6 +38,13 @@ public class BasicApplication extends MultiDexApplication {
         OkHttpClient httpClient = OkHttpManager.getInstance(this).
                 addInterceptor(new CacheStrategyInterceptor()).build();
         RetrofitManager.getInstance().init(httpClient, BASE_URL);
+
+        //ARouter初始化
+        if (isDebug()) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
 
         initRegisterActivity();
     }

@@ -54,8 +54,10 @@ public class MainPageActivity extends BasicActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fab:
-//                Snackbar.make(view, "Here's a SnackBar", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-                startActivity(SubPageActivity.class);
+//                startActivity(SubPageActivity.class);
+//                startActivity(ScrollActivity.class);
+//                startActivity(HorizonScrollActivity.class);
+                startActivity(ViewDrawActivity.class);
                 break;
         }
     }

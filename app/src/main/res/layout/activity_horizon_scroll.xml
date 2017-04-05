@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cn.horizon.life.widgets.MyHorizonScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:scrollbars="horizontal">
+
+    <RelativeLayout
+        android:layout_width="1000dp"
+        android:layout_height="match_parent"
+        android:background="#CDCDCD"
+        android:paddingTop="80dp">
+
+        <com.cn.horizon.life.widgets.MyListView
+            android:id="@+id/lvList"
+            android:layout_width="400dp"
+            android:layout_height="390dp"
+            android:layout_alignParentLeft="true"
+            android:background="#ff0" />
+    </RelativeLayout>
+</com.cn.horizon.life.widgets.MyHorizonScrollView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cn.horizon.life.widgets.MyScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:paddingTop="80dp"
+        android:background="#CDCDCD">
+
+
+        <com.cn.horizon.life.widgets.MyListView
+            android:id="@+id/lvList"
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:background="#ff0" />
+
+    </RelativeLayout>
+</com.cn.horizon.life.widgets.MyScrollView>

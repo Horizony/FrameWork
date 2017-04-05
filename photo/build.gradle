@@ -22,7 +22,7 @@ android {
             } else {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
             }
-            java.srcDirs = ['src/main/java']
+             java.srcDirs = ['src/main/java']
             assets.srcDirs = ['src/main/assets']
             jniLibs.srcDirs = ['scr/main/jni']
         }
