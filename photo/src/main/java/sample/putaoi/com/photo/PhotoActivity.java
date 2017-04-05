@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.cn.horizon.login.Book;
 import com.cn.horizon.login.BookManager;
+import com.cn.horizon.login.OnNewAddListner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.List;
 public class PhotoActivity extends AppCompatActivity {
     private final String ACTION_NAME = "com.cn.horizon.aidl";
     private BookManager bookManager;
+    private MyOnNewListener newListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,12 @@ public class PhotoActivity extends AppCompatActivity {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 bookManager = BookManager.Stub.asInterface(service);
+                newListener = new MyOnNewListener();
+                try {
+                    bookManager.registListener(newListener);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
                 List<Book> books = null;
                 try {
                     books = bookManager.getBooks();
@@ -69,6 +77,7 @@ public class PhotoActivity extends AppCompatActivity {
                 if (books != null && !books.isEmpty()) {
                     for (Book b : books) {
                         Log.d("AIDL", "onServiceConnected: " + b.getName());
+                        Log.d("AIDL", Thread.currentThread() + "");
                     }
                 }
             }
@@ -80,5 +89,22 @@ public class PhotoActivity extends AppCompatActivity {
         }, Context.BIND_AUTO_CREATE);
     }
 
+    private class MyOnNewListener extends OnNewAddListner.Stub {
 
+        @Override
+        public void onNewArrive(Book book) throws RemoteException {
+            Log.d("AIDL", "onNewArrive: " + book.getName());
+            Log.d("AIDL", Thread.currentThread() + "");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            bookManager.unRegistLister(newListener);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }
