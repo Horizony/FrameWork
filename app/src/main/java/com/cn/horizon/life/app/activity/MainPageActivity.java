@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.ImageView;
 
+import com.cn.horizon.library.utils.StatusBarUtil;
 import com.cn.horizon.life.R;
 import com.cn.horizon.life.app.adapter.MainPagerAdapter;
 import com.cn.horizon.life.app.fragment.MainPageFragment;
@@ -39,6 +40,7 @@ public class MainPageActivity extends BasicActivity {
         setSupportActionBar(toolbar);
         initViewPager(viewpager);
         tabs.setupWithViewPager(viewpager);
+        StatusBarUtil.setMIUIStatusBarDark(this, true);
     }
 
     private void initViewPager(ViewPager viewPager) {
